@@ -4,11 +4,15 @@ html{
 }
 /*最外层容器样式*/
 .wrap{
-	width: 10px;
-	height: 10px;
+	/*width: 10px;
+	height: 10px;*/
 	/*改变左右上下,图片方块移动*/
-	margin: 200px 400px;
-	position: relative;
+	/*margin: 200px 400px;
+	position: relative;*/
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 	
 }
 /*包裹所有容器样式*/
@@ -30,7 +34,7 @@ html{
 	position: absolute;
 	width: 300px;
 	height: 300px;
-	opacity: 0.8;
+	opacity: 0.9;
 	transition: all .4s;
 }
 /*定义所有图片样式*/
