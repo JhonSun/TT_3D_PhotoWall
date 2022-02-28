@@ -152,6 +152,7 @@
 
     function initCSS() {
     	$('.player').addClass('play');
+    	audioElement.play();
         TweenMax.to('.player__albumImg', 0.2, {
             scale: 1.1,
             ease: Power0.easeNone
@@ -162,7 +163,7 @@
     document.addEventListener("WeixinJSBridgeReady", function() {
     	playOrPause();
     }, false)
-    playOrPause();
+    // playOrPause();
 });
 </script>
 	</body>
