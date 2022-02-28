@@ -85,13 +85,16 @@
 		    </div>
 		  </div>
 		</div>
-
+		<audio id="myAudio" src="mp3.mp3" autoplay loop style="display:none" />
 <script>
   $(document).ready(function () {
-    var audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', $('.active-song').attr('data-src'));
-    audioElement.setAttribute('autoplay', 'true');
-    audioElement.setAttribute('loop', 'true');
+    // var audioElement = document.createElement('audio');
+    // audioElement.setAttribute('src', $('.active-song').attr('data-src'));
+    // audioElement.setAttribute('autoplay', 'true');
+    // audioElement.setAttribute('loop', 'true');
+
+    var audioElement = document.getElementById("myAudio");
+    audioElement.load();
 
     var tl = new TimelineMax();
     tl.to('.player__albumImg', 3, {
