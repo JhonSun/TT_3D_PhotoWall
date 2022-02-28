@@ -102,7 +102,33 @@
     tl.pause();
 
     $('.player__play').click(function () {
-		if ($('.player').hasClass('play')) {
+		playOrPause();
+    });
+
+
+    var playhead = document.getElementById("playhead");
+    audioElement.addEventListener("timeupdate", function () {
+        var duration = this.duration;
+        var currentTime = this.currentTime;
+        var percentage = (currentTime / duration) * 100;
+        playhead.style.width = percentage * 4 + 'px';
+    });
+
+    audioElement.addEventListener("timeupdate", function () {
+        var duration = this.duration;
+        var currentTime = this.currentTime;
+        var percentage = (currentTime / duration) * 100;
+        playhead.style.width = percentage * 4 + 'px';
+    });
+
+    function updateInfo() {
+        $('.player__author').text($('.active-song').attr('data-author'));
+        $('.player__song').text($('.active-song').attr('data-song'));
+    }
+    updateInfo();
+
+    function playOrPause() {
+    	if ($('.player').hasClass('play')) {
             $('.player').removeClass('play');
             audioElement.pause();
             TweenMax.to('.player__albumImg', 0.2, {
@@ -119,22 +145,7 @@
             })
             tl.resume();
         }
-    });
-
-
-    var playhead = document.getElementById("playhead");
-    audioElement.addEventListener("timeupdate", function () {
-        var duration = this.duration;
-        var currentTime = this.currentTime;
-        var percentage = (currentTime / duration) * 100;
-        playhead.style.width = percentage * 4 + 'px';
-    });
-
-    function updateInfo() {
-        $('.player__author').text($('.active-song').attr('data-author'));
-        $('.player__song').text($('.active-song').attr('data-song'));
     }
-    updateInfo();
 
     function initCSS() {
     	$('.player').addClass('play');
@@ -145,7 +156,10 @@
         tl.resume();
     }
 
-    initCSS();
+    document.addEventListener("WeixinJSBridgeReady", function() {
+    	playOrPause();
+    }, false)
+    playOrPause();
 });
 </script>
 	</body>
