@@ -160,10 +160,26 @@
         tl.resume();
     }
 
-    document.addEventListener("WeixinJSBridgeReady", function() {
-    	playOrPause();
-    }, false)
-    // playOrPause();
+    var userAgent = window.navigator.userAgent;
+
+    //判断是否微信登陆
+	function isWeiXin() {
+		var ua = userAgent.toLowerCase();
+		debugger;
+		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	if (isWeiXin()) {
+		document.addEventListener("WeixinJSBridgeReady", function() {
+	    	initCSS();
+	    }, false);
+	} else if (userAgent.indexOf("Chrome") <= -1) {
+		initCSS();
+	}
 });
 </script>
 	</body>
