@@ -94,7 +94,6 @@
     // audioElement.setAttribute('loop', 'true');
 
     var audioElement = document.getElementById("myAudio");
-    audioElement.load();
 
     var tl = new TimelineMax();
     tl.to('.player__albumImg', 3, {
@@ -152,7 +151,6 @@
 
     function initCSS() {
     	$('.player').addClass('play');
-    	audioElement.play();
         TweenMax.to('.player__albumImg', 0.2, {
             scale: 1.1,
             ease: Power0.easeNone
@@ -165,7 +163,6 @@
     //判断是否微信登陆
 	function isWeiXin() {
 		var ua = userAgent.toLowerCase();
-		debugger;
 		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
 			return true;
 		} else {
@@ -175,6 +172,7 @@
 
 	if (isWeiXin()) {
 		document.addEventListener("WeixinJSBridgeReady", function() {
+			audioElement.play();
 	    	initCSS();
 	    }, false);
 	} else if (userAgent.indexOf("Chrome") <= -1) {
